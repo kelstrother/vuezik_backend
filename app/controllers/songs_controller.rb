@@ -1,5 +1,5 @@
 class SongsController < ApplicationController
-  before_action :set_song, only: [:create, :show, :update, :destroy]
+  before_action :set_song, only: [:show, :update, :destroy]
 
   # GET /songs
   def index
@@ -16,9 +16,8 @@ class SongsController < ApplicationController
   # POST /songs
   def create
     @song = Song.new(song_params)
-    # @song.id = @user.id
 
-    if @song.save
+    if song.save
       render json: @song, status: :created, location: @song
     else
       render json: @song.errors, status: :unprocessable_entity
